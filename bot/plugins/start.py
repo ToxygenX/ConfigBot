@@ -34,8 +34,8 @@ async def start(event):
              [Button.text("Naspernet (Android)"), Button.text("Naspernet (iOS)")],
              [Button.text("Dark Tunnel"), Button.text("V2rayNG")],
              [Button.text("آموزش")],
-              ],
-        resize=True,
+             resize=True,
+        ],
     )
     if usr_cmd == "Naspernet (Android)":
         async for message in client.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument):
