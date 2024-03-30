@@ -1,0 +1,2 @@
+cryptg
+telethon
