@@ -15,7 +15,7 @@ async def start(event):
     replied_user = await event.client(GetFullUserRequest(event.sender_id))
     firstname = replied_user.user.first_name
     uname = replied_user.user.username
-    msg = f"**سلام {firstname} عزیز، به ربات {bot_username} خوش آمدید** \n"**برای دریافت کانفیگ بر روی گزینه های زیر کلیک نمایید**"
+    msg = f"**سلام {firstname} عزیز، به ربات {bot_username} خوش آمدید** \n**برای دریافت کانفیگ بر روی گزینه های زیر کلیک نمایید**"
     await botx.send_message(
         event.chat_id, 
         msg, 
