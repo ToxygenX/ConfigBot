@@ -1,5 +1,6 @@
 import asyncio 
 import glob
+import logging
 from sys import argv
 from pathlib import Path
 
@@ -8,6 +9,16 @@ from telethon import TelegramClient
 
 from bot.utils import botx_cmd, start_botx
 from bot import Config, botx  
+
+logging.basicConfig(
+    level=logging.INFO,
+    datefmt="%d/%m/%Y %H:%M:%S",
+    format="[%(asctime)s][%(levelname)s] => %(message)s",
+    handlers=[logging.StreamHandler(stream=sys.stdout),
+              logging.FileHandler("bot.log", mode="a", encoding="utf-8")],)
+
+logging.getLogger("telethon").setLevel(logging.DEBUG)
+logging.getLogger("bot").setLevel(logging.INFO)
 
 if len(argv) not in (1, 3, 4):
     botx.disconnect()
