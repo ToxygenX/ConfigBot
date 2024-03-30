@@ -17,7 +17,6 @@ buttons= [
              [
                  Button.text("آموزش"),
              ],
-             resize=True,
         ]
 
 def inline_mention(user, custom=None, html=False):
