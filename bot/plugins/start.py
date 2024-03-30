@@ -9,7 +9,7 @@ from bot.BotConfig import Config
 @botx_cmd("start", is_args=False)
 async def start(event):
     usr_cmd = event.text.split("_")[-1]
-    probot = await chatbot.get_me()
+    probot = await botx.get_me()
     bot_id = probot.first_name
     bot_username = probot.username
     replied_user = await event.client(GetFullUserRequest(event.sender_id))
