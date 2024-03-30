@@ -17,7 +17,7 @@ ENV = os.environ.get("ENV", True)
 if ENV:
     from bot.BotConfig import Config
 
-chatbot = TelegramClient("thebotx", api_id=Config.API_ID, api_hash=Config.API_HASH)
+botx = TelegramClient("thebotx", api_id=Config.API_ID, api_hash=Config.API_HASH)
 
 if bool(ENV):
     CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
