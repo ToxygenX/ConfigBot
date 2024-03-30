@@ -30,8 +30,8 @@ async def start(event):
     await botx.send_message(
         event.chat_id, 
         msg, 
-        buttons = [
-             [Button.text("Naspernet (Android)"), Button.text("Naspernet (iOS)")],
+        buttons= [
+             [Button.text("Naspernet-Android"), Button.text("Naspernet-iOS")],
              [Button.text("Dark Tunnel"), Button.text("V2rayNG")],
              [Button.text("آموزش")],
              resize=True,
