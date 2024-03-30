@@ -5,6 +5,20 @@ from telethon.utils import get_display_name
 
 from bot.BotConfig import Config
 
+buttons= [
+             [
+                 Button.text("Naspernet-Android"), 
+                 Button.text("Naspernet-iOS"),
+             ],
+             [
+                 Button.text("Dark Tunnel"), 
+                 Button.text("V2rayNG"),
+             ],
+             [
+                 Button.text("آموزش"),
+             ],
+             resize=True,
+        ]
 
 def inline_mention(user, custom=None, html=False):
     mention_text = get_display_name(user) or "Deleted Account" if not custom else custom
@@ -27,16 +41,7 @@ async def start(event):
     bot_username = probot.username
     mention = inline_mention(event.sender)
     msg = f"**سلام {mention} عزیز، به ربات {bot_username} خوش آمدید** \n**برای دریافت کانفیگ بر روی گزینه های زیر کلیک نمایید**"
-    await botx.send_message(
-        event.chat_id, 
-        msg, 
-        buttons= [
-             [Button.text("Naspernet-Android"), Button.text("Naspernet-iOS")],
-             [Button.text("Dark Tunnel"), Button.text("V2rayNG")],
-             [Button.text("آموزش")],
-             resize=True,
-        ],
-    )
+    await botx.send_message(event.chat_id, msg, buttons=buttons)
     if usr_cmd == "Naspernet (Android)":
         async for message in client.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument):
             if message.text == "#nasperand":
