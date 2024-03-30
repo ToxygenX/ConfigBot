@@ -44,15 +44,15 @@ async def start(event):
     if usr_cmd == "Naspernet (Android)":
         async for message in client.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument):
             if ".npv4" in message.document.attributes[0].file_name:
-                await botx.send_file(event.chat_id, message.document, caption="Naspernet (Android)")
+                await botx.send_file(event.chat_id, message.document, caption=message.text)
     if usr_cmd == "Naspernet (iOS)":
         async for message in client.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument):
             if ".inpv" in message.document.attributes[0].file_name:
-                await botx.send_file(event.chat_id, message.document, caption="Naspernet (iOS)")
+                await botx.send_file(event.chat_id, message.document, caption=message.text)
     if usr_cmd == "Dark Tunnel":
         async for message in client.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument):
             if ".dark" in message.document.attributes[0].file_name:
-                await botx.send_file(event.chat_id, message.document, caption="Dark Tunnel")
+                await botx.send_file(event.chat_id, message.document, caption=message.text)
     if usr_cmd == "V2rayNG":
         async for message in client.iter_messages(Config.LOG_CHAT):
             if "subscription" in message.text:
