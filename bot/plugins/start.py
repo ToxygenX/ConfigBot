@@ -1,10 +1,23 @@
-import re
-
 from telethon import custom, events, Button
-from telethon.tl.functions.users import GetFullUserRequest
+from telethon.tl import types
 from telethon.tl.types import InputMessagesFilterDocument
+from telethon.utils import get_display_name
 
 from bot.BotConfig import Config
+
+
+def inline_mention(user, custom=None, html=False):
+    mention_text = get_display_name(user) or "Deleted Account" if not custom else custom
+    if isinstance(user, types.User):
+        if html:
+            return f"<a href=tg://user?id={user.id}>{mention_text}</a>"
+        return f"[{mention_text}](tg://user?id={user.id})"
+    if isinstance(user, types.Channel) and user.username:
+        if html:
+            return f"<a href=https://t.me/{user.username}>{mention_text}</a>"
+        return f"[{mention_text}](https://t.me/{user.username})"
+    return mention_text
+
 
 @botx_cmd("start", is_args=False)
 async def start(event):
@@ -12,10 +25,8 @@ async def start(event):
     probot = await botx.get_me()
     bot_id = probot.first_name
     bot_username = probot.username
-    replied_user = await event.client(GetFullUserRequest(event.sender_id))
-    firstname = replied_user.user.first_name
-    uname = replied_user.user.username
-    msg = f"**سلام {firstname} عزیز، به ربات {bot_username} خوش آمدید** \n**برای دریافت کانفیگ بر روی گزینه های زیر کلیک نمایید**"
+    mention = inline_mention(event.sender)
+    msg = f"**سلام {mention} عزیز، به ربات {bot_username} خوش آمدید** \n**برای دریافت کانفیگ بر روی گزینه های زیر کلیک نمایید**"
     await botx.send_message(
         event.chat_id, 
         msg, 
