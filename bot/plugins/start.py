@@ -35,6 +35,7 @@ def inline_mention(user, custom=None, html=False):
 @botx_cmd("start", is_args=False)
 async def start(event):
     usr_cmd = event.text.split("_")[-1]
+    print(usr_cmd)
     probot = await botx.get_me()
     bot_id = probot.first_name
     bot_username = probot.username
