@@ -89,7 +89,7 @@ async def catcher(event):
     async for message in botcli.iter_messages(Config.LOG_CHAT):
         try:
             if "subscription" in message.message:
-                await botx.send_message(event.chat_id, message.message)
+                await botx.send_message(event.chat_id, message.message, link_preview=False)
         except Exception as e:
             logging.info(f"Error: {str(e)}")
 
@@ -99,4 +99,4 @@ async def catcher(event):
     await botx.send_file(event.chat_id, "https://graph.org/file/8170922e5d374c592008e.mp4", caption="آموزش اتصال NapsternetV")
     await botx.send_file(event.chat_id, "https://graph.org/file/d6e4d3d5f4389caa759ae.mp4", caption="آموزش اتصال به کانفیگ DarkTunnel")
     await botx.send_file(event.chat_id, "https://graph.org/file/aa7c4aa1f578fdaba1dda.mp4", caption="آموزش وارد کردن سابکریپشن برنامه foxray برای ios")
-    await botx.send_file(event.chat_id, "https://graph.org/file/8170922e5d374c592008e.mp4", caption="آموزش اتصال NapsternetV")
+    await botx.send_file(event.chat_id, "https://graph.org/file/c700388ebcc77c2a80538.mp4", caption="آموزش استفاده از سابکریپشن در برنامه v2rayng")
