@@ -49,7 +49,8 @@ async def start(event):
 @botx.on(events.NewMessage(func=lambda e: e.is_private))
 async def catcher(event):
     if event.text == "Naspernet-Android":
-        async for message in botx.get_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument):
+        fetch = await botx.get_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument)
+        for message in fetch:
             if ".npv4" in message.document.attributes[0].file_name:
                 await botx.send_file(event.chat_id, message.document, caption=message.text)
     if event.text == "Naspernet-iOS":
