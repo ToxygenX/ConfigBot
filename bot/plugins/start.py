@@ -63,11 +63,11 @@ async def is_member(user_id):
 
 @botx_cmd("start", is_args=False)
 async def start(event):
-    if is_member(event.sender_id)== "False":
+    if await is_member(event.sender_id)== "False":
         await botx.send_message(event.chat_id, "لطفا برای استفاده از ربات، به چنل @Hack_Team جوین شوید.")
-    if is_member(event.sender_id)== "FalseBanned":
+    if await is_member(event.sender_id)== "FalseBanned":
         await botx.send_message(event.chat_id, "شما بن شده اید و نمی توانید از ربات استفاده نمایید.")
-    if is_member(event.sender_id)== "True":
+    if await is_member(event.sender_id)== "True":
         probot = await botx.get_me()
         bot_id = probot.first_name
         bot_username = probot.username
@@ -78,11 +78,11 @@ async def start(event):
 
 @botx.on(events.NewMessage(pattern="Naspernet-Android", func=lambda e: e.is_private))
 async def catcher(event):
-    if is_member(event.sender_id)== "False":
+    if await is_member(event.sender_id)== "False":
         await botx.send_message(event.chat_id, "لطفا برای استفاده از ربات، به چنل @Hack_Team جوین شوید.")
-    if is_member(event.sender_id)== "FalseBanned":
+    if await is_member(event.sender_id)== "FalseBanned":
         await botx.send_message(event.chat_id, "شما بن شده اید و نمی توانید از ربات استفاده نمایید.")
-    if is_member(event.sender_id)== "True":
+    if await is_member(event.sender_id)== "True":
         async for message in botcli.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument):
             try:
                 if ".npv4" in message.document.attributes[0].file_name:
@@ -95,11 +95,11 @@ async def catcher(event):
 
 @botx.on(events.NewMessage(pattern="Naspernet-iOS", func=lambda e: e.is_private))
 async def catcher(event):
-    if is_member(event.sender_id)== "False":
+    if await is_member(event.sender_id)== "False":
         await botx.send_message(event.chat_id, "لطفا برای استفاده از ربات، به چنل @Hack_Team جوین شوید.")
-    if is_member(event.sender_id)== "FalseBanned":
+    if await is_member(event.sender_id)== "FalseBanned":
         await botx.send_message(event.chat_id, "شما بن شده اید و نمی توانید از ربات استفاده نمایید.")
-    if is_member(event.sender_id)== "True":
+    if await is_member(event.sender_id)== "True":
         async for message in botcli.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument):
             try:
                 if ".inpv" in message.document.attributes[0].file_name:
@@ -112,11 +112,11 @@ async def catcher(event):
 
 @botx.on(events.NewMessage(pattern="Dark Tunnel", func=lambda e: e.is_private))
 async def catcher(event):
-    if is_member(event.sender_id)== "False":
+    if await is_member(event.sender_id)== "False":
         await botx.send_message(event.chat_id, "لطفا برای استفاده از ربات، به چنل @Hack_Team جوین شوید.")
-    if is_member(event.sender_id)== "FalseBanned":
+    if await is_member(event.sender_id)== "FalseBanned":
         await botx.send_message(event.chat_id, "شما بن شده اید و نمی توانید از ربات استفاده نمایید.")
-    if is_member(event.sender_id)== "True":
+    if await is_member(event.sender_id)== "True":
         async for message in botcli.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument):
             try:
                 if ".dark" in message.document.attributes[0].file_name:
@@ -129,11 +129,11 @@ async def catcher(event):
 
 @botx.on(events.NewMessage(pattern="V2rayNG", func=lambda e: e.is_private))
 async def catcher(event):
-    if is_member(event.sender_id)== "False":
+    if await is_member(event.sender_id)== "False":
         await botx.send_message(event.chat_id, "لطفا برای استفاده از ربات، به چنل @Hack_Team جوین شوید.")
-    if is_member(event.sender_id)== "FalseBanned":
+    if await is_member(event.sender_id)== "FalseBanned":
         await botx.send_message(event.chat_id, "شما بن شده اید و نمی توانید از ربات استفاده نمایید.")
-    if is_member(event.sender_id)== "True":
+    if await is_member(event.sender_id)== "True":
         async for message in botcli.iter_messages(Config.LOG_CHAT):
             try:
                 if "subscription" in message.message:
@@ -144,11 +144,11 @@ async def catcher(event):
 
 @botx.on(events.NewMessage(pattern="آموزش", func=lambda e: e.is_private))
 async def catcher(event):
-    if is_member(event.sender_id)== "False":
+    if await is_member(event.sender_id)== "False":
         await botx.send_message(event.chat_id, "لطفا برای استفاده از ربات، به چنل @Hack_Team جوین شوید.")
-    if is_member(event.sender_id)== "FalseBanned":
+    if await is_member(event.sender_id)== "FalseBanned":
         await botx.send_message(event.chat_id, "شما بن شده اید و نمی توانید از ربات استفاده نمایید.")
-    if is_member(event.sender_id)== "True":
+    if await is_member(event.sender_id)== "True":
         await botx.send_file(event.chat_id, "https://graph.org/file/8170922e5d374c592008e.mp4", caption="آموزش اتصال NapsternetV")
         await botx.send_file(event.chat_id, "https://graph.org/file/d6e4d3d5f4389caa759ae.mp4", caption="آموزش اتصال به کانفیگ DarkTunnel")
         await botx.send_file(event.chat_id, "https://graph.org/file/aa7c4aa1f578fdaba1dda.mp4", caption="آموزش وارد کردن سابکریپشن برنامه foxray برای ios")
