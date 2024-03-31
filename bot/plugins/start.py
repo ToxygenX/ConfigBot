@@ -12,15 +12,15 @@ from bot import botx, botcli
 
 buttons= [
              [
-                 Button.text("Naspernet-Android"), 
-                 Button.text("Naspernet-iOS"),
+                 Button.text("Naspernet-Android", resize=True), 
+                 Button.text("Naspernet-iOS", resize=True),
              ],
              [
-                 Button.text("Dark Tunnel"), 
-                 Button.text("V2rayNG"),
+                 Button.text("Dark Tunnel", resize=True), 
+                 Button.text("V2rayNG", resize=True),
              ],
              [
-                 Button.text("آموزش"),
+                 Button.text("آموزش", resize=True),
              ],
         ]
 
@@ -96,11 +96,7 @@ async def catcher(event):
 
 @botx.on(events.NewMessage(pattern="آموزش", func=lambda e: e.is_private))
 async def catcher(event):
-    async for message in botcli.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterVideo):
-        try:
-            if message.message.startswith("آموزش"):
-                file = await botcli.download_media(message.media)
-                await botx.send_file(event.chat_id, file, caption=message.message)
-                os.remove(file)
-        except AttributeError:
-            return
+    await botx.send_file(event.chat_id, "https://graph.org/file/8170922e5d374c592008e.mp4", caption="آموزش اتصال NapsternetV")
+    await botx.send_file(event.chat_id, "https://graph.org/file/d6e4d3d5f4389caa759ae.mp4", caption="آموزش اتصال به کانفیگ DarkTunnel")
+    await botx.send_file(event.chat_id, "https://graph.org/file/aa7c4aa1f578fdaba1dda.mp4", caption="آموزش وارد کردن سابکریپشن برنامه foxray برای ios")
+    await botx.send_file(event.chat_id, "https://graph.org/file/8170922e5d374c592008e.mp4", caption="آموزش اتصال NapsternetV")
