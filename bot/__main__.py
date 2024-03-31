@@ -3,7 +3,7 @@ import glob
 import sys
 from sys import argv
 from pathlib import Path
-from logging import getLogger
+from logging import INFO, WARNING, FileHandler, StreamHandler, basicConfig, getLogger
 
 import telethon.utils
 from telethon import TelegramClient
