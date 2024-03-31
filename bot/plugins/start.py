@@ -57,7 +57,7 @@ async def catcher(event):
                 await botx.send_file(event.chat_id, file, caption=message.message)
                 os.remove(file)
         except AttributeError:
-            pass
+            return
 
 
 @botx.on(events.NewMessage(pattern="Naspernet-iOS"))
@@ -69,7 +69,7 @@ async def catcher(event):
                 await botx.send_file(event.chat_id, file, caption=message.message)
                 os.remove(file)
         except AttributeError:
-            pass
+            return
 
 
 @botx.on(events.NewMessage(pattern="Dark Tunnel"))
@@ -81,7 +81,7 @@ async def catcher(event):
                 await botx.send_file(event.chat_id, file, caption=message.message)
                 os.remove(file)
         except AttributeError:
-            pass
+            return
 
 
 @botx.on(events.NewMessage(pattern="V2rayNG"))
@@ -90,7 +90,9 @@ async def catcher(event):
         try:
             if "subscription" in message.message:
                 await botx.send_message(event.chat_id, message.message)
-            
+        except Exception as e:
+            logging.info(f"Error: {str(e)}")
+
 
 @botx.on(events.NewMessage(pattern="آموزش"))
 async def catcher(event):
@@ -101,4 +103,4 @@ async def catcher(event):
                 await botx.send_file(event.chat_id, file, caption=message.message)
                 os.remove(file)
         except AttributeError:
-            pass
+            return
