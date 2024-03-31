@@ -9,12 +9,14 @@ import telethon.utils
 from telethon import TelegramClient
 
 from bot.utils import botx_cmd, start_botx
-from bot import Config, botx
+from bot import Config, botx, botcli
 
 if len(argv) not in (1, 3, 4):
     botx.disconnect()
+    botcli.disconnect()
 else:
     botx.start(bot_token=Config.BOT_TOKEN)
+    botcli.start()
     
 path = "bot/plugins/*.py"
 files = glob.glob(path)
@@ -29,5 +31,7 @@ logging.info("Try Sending /start")
 
 if len(argv) not in (1, 3, 4):
     botx.disconnect()
+    botcli.disconnect()
 else:
     botx.run_until_disconnected()
+    botcli.run_until_disconnected()
