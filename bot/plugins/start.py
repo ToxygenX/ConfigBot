@@ -48,7 +48,7 @@ async def start(event):
     await botx.send_message(event.chat_id, msg, buttons=buttons)
 
 
-@botx.on(events.NewMessage(pattern="Naspernet-Android"))
+@botx.on(events.NewMessage(pattern="Naspernet-Android", func=lambda e: e.is_private))
 async def catcher(event):
     async for message in botcli.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument):
         try:
@@ -60,7 +60,7 @@ async def catcher(event):
             return
 
 
-@botx.on(events.NewMessage(pattern="Naspernet-iOS"))
+@botx.on(events.NewMessage(pattern="Naspernet-iOS", func=lambda e: e.is_private))
 async def catcher(event):
     async for message in botcli.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument):
         try:
@@ -72,7 +72,7 @@ async def catcher(event):
             return
 
 
-@botx.on(events.NewMessage(pattern="Dark Tunnel"))
+@botx.on(events.NewMessage(pattern="Dark Tunnel", func=lambda e: e.is_private))
 async def catcher(event):
     async for message in botcli.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument):
         try:
@@ -84,7 +84,7 @@ async def catcher(event):
             return
 
 
-@botx.on(events.NewMessage(pattern="V2rayNG"))
+@botx.on(events.NewMessage(pattern="V2rayNG", func=lambda e: e.is_private))
 async def catcher(event):
     async for message in botcli.iter_messages(Config.LOG_CHAT):
         try:
@@ -94,7 +94,7 @@ async def catcher(event):
             logging.info(f"Error: {str(e)}")
 
 
-@botx.on(events.NewMessage(pattern="آموزش"))
+@botx.on(events.NewMessage(pattern="آموزش", func=lambda e: e.is_private))
 async def catcher(event):
     async for message in botcli.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterVideo):
         try:
