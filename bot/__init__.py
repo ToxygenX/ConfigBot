@@ -9,7 +9,7 @@ import logging
 
 import telethon.utils
 from telethon import TelegramClient, events, functions, types
-
+from telethon.sessions import StringSession
 
 ENV = os.environ.get("ENV", True)
 
@@ -26,7 +26,10 @@ logging.basicConfig(
 logging.getLogger("telethon").setLevel(logging.INFO)
 
 botx = TelegramClient("thebotx", api_id=Config.API_ID, api_hash=Config.API_HASH)
-    
+
+botcli = TelegramClient(StringSession(Config.SESSION), api_id=Config.API_ID, api_hash=Config.API_HASH)
+
+
 if Config.BOT_TOKEN is None:
     logging.info("BOT_TOKEN is None. Bot Is Quiting")
     sys.exit(1)
