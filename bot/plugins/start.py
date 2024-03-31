@@ -1,3 +1,4 @@
+import os
 import logging
 
 from telethon import custom, events, Button
@@ -51,7 +52,10 @@ async def catcher(event):
     async for message in botcli.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument):
         if ".npv4" in message.document.attributes[0].file_name:
             logging.info(f"message : {message}")
-            await botx.send_file(event.chat_id, message, caption=message.message)
+            file = await botcli.download_media(message.document)
+            logging.info(f"{file}")
+            await botx.send_file(event.chat_id, file, caption=message.message)
+            os.remove(file)
 
 
   
