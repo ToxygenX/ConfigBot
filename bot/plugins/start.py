@@ -51,7 +51,7 @@ async def catcher(event):
     async for message in botcli.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument):
         if ".npv4" in message.document.attributes[0].file_name:
             logging.info(f"message : {message}")
-            await botx.send_file(event.chat_id, message.media.document, caption=message.message)
+            await botx.send_file(event.chat_id, message, caption=message.message)
 
 
   
