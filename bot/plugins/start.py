@@ -2,7 +2,7 @@ import logging
 
 from telethon import custom, events, Button
 from telethon.tl import types
-from telethon.tl.types import InputMessagesFilterDocument
+from telethon.tl.types import InputMessagesFilterDocument, InputMessagesFilterVideo
 from telethon.utils import get_display_name
 
 from bot.BotConfig import Config
@@ -49,7 +49,7 @@ async def start(event):
 @botx.on(events.NewMessage(func=lambda e: e.is_private))
 async def catcher(event):
     if event.text == "Naspernet-Android":
-        async for message in botx.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument):
+        async for message in botx.get_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument):
             if ".npv4" in message.document.attributes[0].file_name:
                 await botx.send_file(event.chat_id, message.document, caption=message.text)
     if event.text == "Naspernet-iOS":
