@@ -3,6 +3,7 @@ import glob
 import sys
 from sys import argv
 from pathlib import Path
+import logging
 
 import telethon.utils
 from telethon import TelegramClient
@@ -24,8 +25,8 @@ for name in files:
         shortname = path1.stem
         start_botx(shortname.replace(".py", ""))
 
-LOGS.info("Your Bot is Ready.")
-LOGS.info("Try Sending /start")
+logging.info("Your Bot is Ready.")
+logging.info("Try Sending /start")
 
 if len(argv) not in (1, 3, 4):
     botx.disconnect()
