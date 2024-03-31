@@ -6,6 +6,7 @@ from telethon.tl.types import InputMessagesFilterDocument, InputMessagesFilterVi
 from telethon.utils import get_display_name
 
 from bot.BotConfig import Config
+from bot import botx, botcli
 
 
 buttons= [
