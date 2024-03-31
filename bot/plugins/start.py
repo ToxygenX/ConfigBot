@@ -64,14 +64,15 @@ async def is_member(user_id):
 
 @botx_cmd("start", is_args=False)
 async def start(event):
-    logging.info(f"{event.sender.id}")
-    if await is_member(event.sender.id)== "False":
+    user_id = int(event.sender.id)
+    logging.info(f"Status: {await is_member(user_id)}")
+    if await is_member(user_id)== "False":
         logging.info("False")
         await botx.send_message(event.chat_id, "لطفا برای استفاده از ربات، به چنل @Hack_Team جوین شوید.")
-    if await is_member(event.sender.id)== "FalseBanned":
+    if await is_member(user_id)== "FalseBanned":
         logging.info("FalseBanned")
         await botx.send_message(event.chat_id, "شما بن شده اید و نمی توانید از ربات استفاده نمایید.")
-    if await is_member(event.sender.id)== "True":
+    if await is_member(user_id)== "True":
         logging.info("True")
         probot = await botx.get_me()
         bot_id = probot.first_name
