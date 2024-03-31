@@ -20,9 +20,9 @@ logging.basicConfig(
     datefmt="%d/%m/%Y %H:%M:%S",
     format="[%(asctime)s][%(name)s][%(levelname)s] ==> %(message)s",
     handlers=[logging.StreamHandler(stream=sys.stdout),
-              logging.FileHandler("captionbot.log", mode="a", encoding="utf-8")],)
+              logging.FileHandler("botx.log", mode="a", encoding="utf-8")],)
 
-logging.getLogger("pyrogram").setLevel(logging.INFO)
+logging.getLogger("telethon").setLevel(logging.INFO)
 
 botx = TelegramClient("thebotx", api_id=Config.API_ID, api_hash=Config.API_HASH)
     
