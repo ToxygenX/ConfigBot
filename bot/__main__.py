@@ -12,7 +12,9 @@ from bot.utils import botx_cmd, start_botx
 from bot import Config, botx  
 
     
-LOGS = getLogger("CythonX")
+LOGS = getLogger("bot")
+TelethonLogger = getLogger("Telethon")
+TelethonLogger.setLevel(WARNING)
 
 if len(argv) not in (1, 3, 4):
     botx.disconnect()
