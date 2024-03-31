@@ -7,6 +7,7 @@ from telethon.utils import get_display_name
 
 from bot.BotConfig import Config
 
+
 buttons= [
              [
                  Button.text("Naspernet-Android"), 
@@ -20,6 +21,7 @@ buttons= [
                  Button.text("آموزش"),
              ],
         ]
+
 
 def inline_mention(user, custom=None, html=False):
     mention_text = get_display_name(user) or "Deleted Account" if not custom else custom
@@ -46,24 +48,23 @@ async def start(event):
 
 @botx.on(events.NewMessage(func=lambda e: e.is_private))
 async def catcher(event):
-    if event.text == "Naspernet (Android)":
-        async for message in client.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument):
+    if event.text == "Naspernet-Android":
+        async for message in botx.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument):
             if ".npv4" in message.document.attributes[0].file_name:
                 await botx.send_file(event.chat_id, message.document, caption=message.text)
-    if event.text == "Naspernet (iOS)":
-        async for message in client.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument):
+    if event.text == "Naspernet-iOS":
+        async for message in botx.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument):
             if ".inpv" in message.document.attributes[0].file_name:
                 await botx.send_file(event.chat_id, message.document, caption=message.text)
     if event.text == "Dark Tunnel":
-        async for message in client.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument):
+        async for message in botx.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument):
             if ".dark" in message.document.attributes[0].file_name:
                 await botx.send_file(event.chat_id, message.document, caption=message.text)
     if event.text == "V2rayNG":
-        async for message in client.iter_messages(Config.LOG_CHAT):
+        async for message in botx.iter_messages(Config.LOG_CHAT):
             if "subscription" in message.text:
                 await botx.send_message(event.chat_id, message.text)
     if event.text == "آموزش":
-        async for message in client.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterVideo):
+        async for message in botx.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterVideo):
             if message.text.startswith("آموزش"):
                 await botx.send_file(event.chat_id, message.media, caption=message.text)
-    
