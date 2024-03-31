@@ -9,8 +9,7 @@ import telethon.utils
 from telethon import TelegramClient
 
 from bot.utils import botx_cmd, start_botx
-from bot import Config, botx  
-from bot import LOGS
+from bot import Config, botx
 
 if len(argv) not in (1, 3, 4):
     botx.disconnect()
