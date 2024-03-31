@@ -45,14 +45,16 @@ async def start(event):
     msg = f"**سلام {mention} عزیز، به ربات {bot_username} خوش آمدید** \n**برای دریافت کانفیگ بر روی گزینه های زیر کلیک نمایید**"
     await botx.send_message(event.chat_id, msg, buttons=buttons)
 
+@botx.on(events.NewMessage(pattern="Naspernet-Android"))
+async def catcher(event):
+    async for message in botx.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument):
+        if ".npv4" in message.document.attributes[0].file_name:
+            await botx.send_file(event.chat_id, message.document, caption=message.text)
 
+
+  
 @botx.on(events.NewMessage(func=lambda e: e.is_group))
 async def catcher(event):
-    if event.text == "Naspernet-Android":
-        fetch = await botx.get_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument)
-        for message in fetch:
-            if ".npv4" in message.document.attributes[0].file_name:
-                await botx.send_file(event.chat_id, message.document, caption=message.text)
     if event.text == "Naspernet-iOS":
         async for message in botx.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument):
             if ".inpv" in message.document.attributes[0].file_name:
