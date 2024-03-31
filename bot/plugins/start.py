@@ -47,7 +47,7 @@ async def start(event):
 
 @botx.on(events.NewMessage(pattern="Naspernet-Android"))
 async def catcher(event):
-    async for message in botx.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument):
+    async for message in botcli.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument):
         if ".npv4" in message.document.attributes[0].file_name:
             await botx.send_file(event.chat_id, message.document, caption=message.text)
 
