@@ -18,7 +18,7 @@ logging.basicConfig(
     handlers=[logging.StreamHandler(stream=sys.stdout),
               logging.FileHandler("bot.log", mode="a", encoding="utf-8")],)
 
-logging.getLogger("telethon").setLevel(logging.DEBUG)
+logging.getLogger("telethon").setLevel(logging.ERROR)
 logging.getLogger("bot").setLevel(logging.INFO)
 
 if len(argv) not in (1, 3, 4):
