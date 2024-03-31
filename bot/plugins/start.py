@@ -42,6 +42,10 @@ async def start(event):
     mention = inline_mention(event.sender)
     msg = f"**سلام {mention} عزیز، به ربات {bot_username} خوش آمدید** \n**برای دریافت کانفیگ بر روی گزینه های زیر کلیک نمایید**"
     await botx.send_message(event.chat_id, msg, buttons=buttons)
+
+
+@botx.on(events.NewMessage(func=lambda e: e.is_private))
+async def catcher(event):
     if event.text == "Naspernet (Android)":
         async for message in client.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument):
             if ".npv4" in message.document.attributes[0].file_name:
