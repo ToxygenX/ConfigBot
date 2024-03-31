@@ -46,7 +46,7 @@ async def start(event):
     await botx.send_message(event.chat_id, msg, buttons=buttons)
 
 
-@botx.on(events.NewMessage(func=lambda e: e.is_private))
+@botx.on(events.NewMessage(func=lambda e: e.is_group))
 async def catcher(event):
     if event.text == "Naspernet-Android":
         fetch = await botx.get_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument)
