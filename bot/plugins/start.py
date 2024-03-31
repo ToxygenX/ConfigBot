@@ -36,8 +36,6 @@ def inline_mention(user, custom=None, html=False):
 
 @botx_cmd("start", is_args=False)
 async def start(event):
-    usr_cmd = event.text.split("_")[-1]
-    logging.info(usr_cmd)
     probot = await botx.get_me()
     bot_id = probot.first_name
     bot_username = probot.username
@@ -48,19 +46,19 @@ async def start(event):
         async for message in client.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument):
             if ".npv4" in message.document.attributes[0].file_name:
                 await botx.send_file(event.chat_id, message.document, caption=message.text)
-    if usr_cmd == "Naspernet (iOS)":
+    if event.text == "Naspernet (iOS)":
         async for message in client.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument):
             if ".inpv" in message.document.attributes[0].file_name:
                 await botx.send_file(event.chat_id, message.document, caption=message.text)
-    if usr_cmd == "Dark Tunnel":
+    if event.text == "Dark Tunnel":
         async for message in client.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument):
             if ".dark" in message.document.attributes[0].file_name:
                 await botx.send_file(event.chat_id, message.document, caption=message.text)
-    if usr_cmd == "V2rayNG":
+    if event.text == "V2rayNG":
         async for message in client.iter_messages(Config.LOG_CHAT):
             if "subscription" in message.text:
                 await botx.send_message(event.chat_id, message.text)
-    if usr_cmd == "آموزش":
+    if event.text == "آموزش":
         async for message in client.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterVideo):
             if message.text.startswith("آموزش"):
                 await botx.send_file(event.chat_id, message.media, caption=message.text)
