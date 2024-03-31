@@ -3,18 +3,13 @@ import glob
 import sys
 from sys import argv
 from pathlib import Path
-from logging import INFO, WARNING, FileHandler, StreamHandler, basicConfig, getLogger
 
 import telethon.utils
 from telethon import TelegramClient
 
 from bot.utils import botx_cmd, start_botx
 from bot import Config, botx  
-
-    
-LOGS = getLogger("bot")
-TelethonLogger = getLogger("Telethon")
-TelethonLogger.setLevel(WARNING)
+from bot import LOGS
 
 if len(argv) not in (1, 3, 4):
     botx.disconnect()
