@@ -16,7 +16,9 @@ if len(argv) not in (1, 3, 4):
     botcli.disconnect()
 else:
     botx.start(bot_token=Config.BOT_TOKEN)
+    logging.info("API Client Started")
     botcli.start()
+    logging.info("CLI Client Started")
     
 path = "bot/plugins/*.py"
 files = glob.glob(path)
