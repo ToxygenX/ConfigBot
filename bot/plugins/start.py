@@ -47,33 +47,58 @@ async def start(event):
     msg = f"**سلام {mention} عزیز، به ربات {bot_username} خوش آمدید** \n**برای دریافت کانفیگ بر روی گزینه های زیر کلیک نمایید**"
     await botx.send_message(event.chat_id, msg, buttons=buttons)
 
+
 @botx.on(events.NewMessage(pattern="Naspernet-Android"))
 async def catcher(event):
     async for message in botcli.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument):
-        if ".npv4" in message.document.attributes[0].file_name:
-            logging.info(f"message : {message}")
-            file = await botcli.download_media(message.document)
-            logging.info(f"{file}")
-            await botx.send_file(event.chat_id, file, caption=message.message)
-            os.remove(file)
+        try:
+            if ".npv4" in message.document.attributes[0].file_name:
+                file = await botcli.download_media(message.document)
+                await botx.send_file(event.chat_id, file, caption=message.message)
+                os.remove(file)
+        except AttributeError:
+            pass
 
 
-  
-@botx.on(events.NewMessage(func=lambda e: e.is_group))
+@botx.on(events.NewMessage(pattern="Naspernet-iOS"))
 async def catcher(event):
-    if event.text == "Naspernet-iOS":
-        async for message in botx.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument):
+    async for message in botcli.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument):
+        try:
             if ".inpv" in message.document.attributes[0].file_name:
-                await botx.send_file(event.chat_id, message.document, caption=message.text)
-    if event.text == "Dark Tunnel":
-        async for message in botx.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument):
+                file = await botcli.download_media(message.document)
+                await botx.send_file(event.chat_id, file, caption=message.message)
+                os.remove(file)
+        except AttributeError:
+            pass
+
+
+@botx.on(events.NewMessage(pattern="Dark Tunnel"))
+async def catcher(event):
+    async for message in botcli.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterDocument):
+        try:
             if ".dark" in message.document.attributes[0].file_name:
-                await botx.send_file(event.chat_id, message.document, caption=message.text)
-    if event.text == "V2rayNG":
-        async for message in botx.iter_messages(Config.LOG_CHAT):
-            if "subscription" in message.text:
-                await botx.send_message(event.chat_id, message.text)
-    if event.text == "آموزش":
-        async for message in botx.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterVideo):
-            if message.text.startswith("آموزش"):
-                await botx.send_file(event.chat_id, message.media, caption=message.text)
+                file = await botcli.download_media(message.document)
+                await botx.send_file(event.chat_id, file, caption=message.message)
+                os.remove(file)
+        except AttributeError:
+            pass
+
+
+@botx.on(events.NewMessage(pattern="V2rayNG"))
+async def catcher(event):
+    async for message in botcli.iter_messages(Config.LOG_CHAT):
+        try:
+            if "subscription" in message.message:
+                await botx.send_message(event.chat_id, message.message)
+            
+
+@botx.on(events.NewMessage(pattern="آموزش"))
+async def catcher(event):
+    async for message in botcli.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterVideo):
+        try:
+            if message.message.startswith("آموزش"):
+                file = await botcli.download_media(message.media)
+                await botx.send_file(event.chat_id, file, caption=message.message)
+                os.remove(file)
+        except AttributeError:
+            pass
