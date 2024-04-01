@@ -78,7 +78,7 @@ async def start(event):
         await botx.send_message(event.chat_id, msg, buttons=buttons)
 
 
-@botx.on(events.NewMessage(pattern="Naspernet-Android", func=lambda e: e.is_private))
+@botx.on(events.NewMessage(pattern="Napsternetv-Android", func=lambda e: e.is_private))
 async def catcher(event):
     user_id = int(event.sender.id)
     if await is_member(user_id) == False:
@@ -96,7 +96,7 @@ async def catcher(event):
                 return
 
 
-@botx.on(events.NewMessage(pattern="Naspernet-iOS", func=lambda e: e.is_private))
+@botx.on(events.NewMessage(pattern="Napsternetv-iOS", func=lambda e: e.is_private))
 async def catcher(event):
     user_id = int(event.sender.id)
     if await is_member(user_id) == False:
