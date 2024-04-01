@@ -1,2 +1,2 @@
 cryptg
-telethon
+https://github.com/ToxygenX/Telethon/archive/refs/heads/v1.zip
