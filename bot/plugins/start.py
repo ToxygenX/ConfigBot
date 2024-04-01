@@ -74,7 +74,7 @@ async def start(event):
         bot_id = probot.first_name
         bot_username = probot.username
         mention = inline_mention(event.sender)
-        msg = f"**سلام {mention} عزیز، به ربات {bot_username} خوش آمدید** \n**برای دریافت کانفیگ بر روی گزینه های زیر کلیک نمایید**"
+        msg = f"**سلام {mention} عزیز، به ربات 𝐿𝑂𝑅𝐷 𝐶𝑂𝑁𝐹𝐼𝐺 خوش آمدید** \n**برای دریافت کانفیگ بر روی گزینه های زیر کلیک نمایید**"
         await botx.send_message(event.chat_id, msg, buttons=buttons)
 
 
