@@ -49,7 +49,7 @@ def inline_mention(user, custom=None, html=False):
 
 async def is_member(user_id):
     try:
-        values = await botx(GetParticipantRequest("@FutureTechnologyOfficial", user_id))
+        values = await botx(GetParticipantRequest("@Hack_Team", user_id))
         if isinstance(values.participant, ChannelParticipant):
             return True
         if isinstance(values.participant, ChannelParticipantCreator):
