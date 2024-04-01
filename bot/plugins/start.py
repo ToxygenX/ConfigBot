@@ -5,7 +5,7 @@ import logging
 from telethon import custom, events, Button
 from telethon.tl import types
 from telethon.utils import get_display_name
-from telethon.tl.types import InputMessagesFilterDocument
+from telethon.tl.types import InputMessagesFilterDocument, InputMessagesFilterUrl
 from telethon.tl.functions.channels import GetParticipantRequest
 from telethon.tl.types import (
     ChannelParticipant, 
@@ -140,7 +140,7 @@ async def catcher(event):
     if await is_member(user_id) == "FalseBanned":
         await botx.send_message(event.chat_id, "شما بن شده اید و نمی توانید از ربات استفاده نمایید.")
     if await is_member(user_id) == True:
-        async for message in botcli.iter_messages(Config.LOG_CHAT):
+        async for message in botcli.iter_messages(Config.LOG_CHAT, filter=InputMessagesFilterUrl):
             try:
                 if "subscription" in message.message:
                     await botx.send_message(event.chat_id, message.message, link_preview=False)
