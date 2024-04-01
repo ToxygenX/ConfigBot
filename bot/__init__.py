@@ -25,7 +25,7 @@ logging.basicConfig(
 
 logging.getLogger("telethon").setLevel(logging.ERROR)
 
-botx = TelegramClient("thebotx", api_id=Config.API_ID, api_hash=Config.API_HASH)
+botx = TelegramClient("thebotx", api_id=6, api_hash="eb06d4abfb49dc3eeb1aeb98ae0f581e")
 
 botcli = TelegramClient(StringSession(Config.SESSION), api_id=Config.API_ID, api_hash=Config.API_HASH)
 
