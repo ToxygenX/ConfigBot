@@ -21,8 +21,8 @@ from bot import botx, botcli
 
 buttons= [
              [
-                 Button.text("Naspernet-Android", resize=True), 
-                 Button.text("Naspernet-iOS", resize=True),
+                 Button.text("Napsternetv-Android", resize=True), 
+                 Button.text("Napsternetv-iOS", resize=True),
              ],
              [
                  Button.text("Dark Tunnel", resize=True), 
