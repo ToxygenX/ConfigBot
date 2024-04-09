@@ -1,3 +1,5 @@
+#All Credits Belong to @CipherXBot
+
 import os
 
 class Config(object):
