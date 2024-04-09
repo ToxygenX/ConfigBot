@@ -1,3 +1,5 @@
+#All Credits Belong to @CipherXBot
+
 import asyncio
 import glob
 import os
