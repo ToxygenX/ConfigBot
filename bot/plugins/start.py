@@ -1,3 +1,5 @@
+#All Credits Belong to @CipherXBot
+
 import os
 import asyncio
 import logging
@@ -30,6 +32,7 @@ buttons= [
              ],
              [
                  Button.text("آموزش", resize=True),
+                 Button.text("حمایت", resize=True),
              ],
         ]
 
@@ -160,3 +163,14 @@ async def catcher(event):
         await botx.send_file(event.chat_id, "https://graph.org/file/d6e4d3d5f4389caa759ae.mp4", caption="آموزش اتصال به کانفیگ DarkTunnel")
         await botx.send_file(event.chat_id, "https://graph.org/file/aa7c4aa1f578fdaba1dda.mp4", caption="آموزش وارد کردن سابکریپشن برنامه foxray برای ios")
         await botx.send_file(event.chat_id, "https://graph.org/file/c700388ebcc77c2a80538.mp4", caption="آموزش استفاده از سابکریپشن در برنامه v2rayng")
+
+
+@botx.on(events.NewMessage(pattern="حمایت", func=lambda e: e.is_private))
+async def catcher(event):
+    user_id = int(event.sender.id)
+    if await is_member(user_id) == False:
+        await botx.send_message(event.chat_id, "لطفا برای استفاده از ربات، به چنل @Hack_Team جوین شوید.")
+    if await is_member(user_id) == "FalseBanned":
+        await botx.send_message(event.chat_id, "شما بن شده اید و نمی توانید از ربات استفاده نمایید.")
+    if await is_member(user_id) == True:
+        await botx.send_message(event.chat_id, "**✨حمایت مالی**\nUSDT(Trc20):\n`TKRdf1cXbrEDByP4nFMdMiyzTfG7AgBKWs`\n\n**TRX(tron):**\n`TKRdf1cXbrEDByP4nFMdMiyzTfG7AgBKWs`")
