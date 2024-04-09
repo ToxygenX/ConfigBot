@@ -32,7 +32,7 @@ buttons= [
              ],
              [
                  Button.text("آموزش", resize=True),
-                 Button.text("حمایت", resize=True),
+                 Button.text("حمایت مالی", resize=True),
              ],
         ]
 
@@ -165,7 +165,7 @@ async def catcher(event):
         await botx.send_file(event.chat_id, "https://graph.org/file/c700388ebcc77c2a80538.mp4", caption="آموزش استفاده از سابکریپشن در برنامه v2rayng")
 
 
-@botx.on(events.NewMessage(pattern="حمایت", func=lambda e: e.is_private))
+@botx.on(events.NewMessage(pattern="حمایت مالی", func=lambda e: e.is_private))
 async def catcher(event):
     user_id = int(event.sender.id)
     if await is_member(user_id) == False:
