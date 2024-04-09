@@ -1,3 +1,5 @@
+#All Credits Belong to @CipherXBot
+
 import re 
 import inspect
 import logging
